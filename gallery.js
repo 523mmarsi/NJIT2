@@ -61,6 +61,35 @@ function swapPhoto() {
 	mLastFrameTime = 0;
 	mCurrentIndex += 1;
 }
+
+// function to click button to move photo 
+function prevPhoto() {
+	//Add code here to access the #slideShow element.
+	//Access the img element and replace its source
+	//with a new image from your images array which is loaded 
+	//from the JSON string
+	if(mCurrentIndex >= mImages.length){
+		mCurrentIndex = 0;
+	}
+
+	if(mCurrentIndex < 0){
+		mCurrentIndex = mImages.length - 1;
+	}
+
+	document.getElementById('photo').src = mImages[mCurrentIndex].img;
+
+	var loc = document.getElementsByClassName('location');
+	loc[0].innerHTML = 'Location: ' + mImages[mCurrentIndex].location;
+
+	var des = document.getElementsByClassName('description');
+	des[0].innerHTML = 'Description: ' + mImages[mCurrentIndex].description;
+
+	var dt = document.getElementsByClassName('date');
+	dt[0].innerHTML = 'Date: ' + mImages[mCurrentIndex].date;
+
+	mLastFrameTime = 0;
+	mCurrentIndex -= 1;
+}
  
 // Counter for the mImages array
 var mCurrentIndex = 0;
@@ -123,6 +152,13 @@ $(document).ready( function() {
 	// This initially hides the photos' metadata information
 	// $('.details').eq(0).hide();
 	fetchJSON()
+// images switch on click //
+	$( "#nextPhoto" ).click(function() {
+  swapPhoto();
+});
+$( "#prevPhoto" ).click(function() {
+  prevPhoto();
+});
 });
 
 window.addEventListener('load', function() {
@@ -144,3 +180,17 @@ function GalleryImage() {
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
 	let img;
 };
+
+
+//Add a click handler to the img.moreIndicator; add and remove class attributes to animate; turn arrow on click
+function showDetails(){
+	if($('.moreIndicator').hasClass("rot90")){
+		$('.moreIndicator').removeClass("rot90");
+		$('.moreIndicator').addClass("rot270");
+	} else {
+		$('.moreIndicator').removeClass("rot270");
+		$('.moreIndicator').addClass("rot90")
+	}
+	$('.details').slideToggle("slow", "linear")
+}
+
