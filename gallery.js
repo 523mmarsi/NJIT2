@@ -105,12 +105,15 @@ var mJson;
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'images.json';
-
+ var mUrl = 'images.json';
 
 // Part 2 Slideshow 1 and 2
 // constructor to create JSON file
 function fetchJSON() {
+	if(mUrl == undefined) {
+		mUrl = 'images-short.json';
+	}
+
 	mRequest.onreadystatechange = function() {
 		console.log("on ready state change");
 		if(this.readyState == 4 && this.status == 200) {
@@ -153,10 +156,6 @@ $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
 	// $('.details').eq(0).hide();
-
-
-
-
 
 	fetchJSON()
 // images switch on click //
