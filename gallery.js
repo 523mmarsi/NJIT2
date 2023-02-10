@@ -62,7 +62,7 @@ function swapPhoto() {
 	mCurrentIndex += 1;
 }
 
-// function to click button to move photo 
+// function to click button to move to previous photo
 function prevPhoto() {
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
@@ -105,7 +105,7 @@ var mJson;
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'https://api.npoint.io/a2a427005054ea24b4ae';
+var mUrl = 'images.json';
 
 
 // Part 2 Slideshow 1 and 2
@@ -147,10 +147,17 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 	}
 }
 
+
+
 $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
 	// $('.details').eq(0).hide();
+
+
+
+
+
 	fetchJSON()
 // images switch on click //
 	$( "#nextPhoto" ).click(function() {
