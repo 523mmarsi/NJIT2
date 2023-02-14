@@ -40,6 +40,8 @@ body {
 
 .thumbnail {
 	box-shadow: 2px 4px 21px 0px;
+	height: 100%;
+	width: 100%;
 }
 
 
